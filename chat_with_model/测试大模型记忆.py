@@ -12,9 +12,21 @@ completion = client.chat.completions.create(
     model="qwen-plus",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "你是谁？"},
+        {"role": "user", "content": "你好，我是一名正在学习ai技术的程序员，我叫小明？"},
     ]
 )
 
 print(completion.model_dump_json())
+print(completion.choices[0].message.content)
+print()
+
+completion = client.chat.completions.create(
+    # 模型列表：https://help.aliyun.com/zh/model-studio/getting-started/models
+    model="qwen-plus",
+    messages=[
+        {"role": "user", "content": "我是谁？"},
+    ]
+)
+
+print("第二次调用")
 print(completion.choices[0].message.content)

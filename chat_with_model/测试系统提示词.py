@@ -11,10 +11,11 @@ completion = client.chat.completions.create(
     # 模型列表：https://help.aliyun.com/zh/model-studio/getting-started/models
     model="qwen-plus",
     messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": "背景设定：你现在是一个AI老师，负责上AI课程"},
         {"role": "user", "content": "你是谁？"},
     ]
 )
+
 
 print(completion.model_dump_json())
 print(completion.choices[0].message.content)

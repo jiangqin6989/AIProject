@@ -13,8 +13,22 @@ completion = client.chat.completions.create(
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "你是谁？"},
-    ]
+    ],
+    stream = True,
+    stream_options = {"include_usage":True}
 )
 
-print(completion.model_dump_json())
-print(completion.choices[0].message.content)
+for chunk in completion:
+    # print(chunk.model_dump_json())
+    if chunk.choices:
+        content = chunk.choices[0].delta.content
+        if content :
+            print(content,
+                  end="",  #换行符是“”
+                  flush=True  #刷新缓存区
+            )
+    elif hasattr(chunk,"usage") and chunk.usage:
+        print(f"\n\nToken 使用情况：{chunk.usage}")
+
+    # if chunk.choices[0].delta.content:
+    #     print(chunk.choices[0].delta.content)
