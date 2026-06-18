@@ -7,6 +7,7 @@ prompt_template = PromptTemplate.from_template(
     "假设你是一名{export}专家，请你解释一下{content}是什么？"
 )
 
+
 chain = prompt_template | llm
 
 result = chain.stream(input = {"export":"AI","content":"Langgraph"})
