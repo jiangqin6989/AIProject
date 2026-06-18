@@ -1,11 +1,6 @@
 from langchain_community.llms.tongyi import Tongyi
 from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
 
-
-def MessagePlacehold(param):
-    pass
-
-
 chat_prompt_template = ChatPromptTemplate.from_messages([
     # ("system","假设你是一个{export}专家"),
     ("system","假设你是一个AI专家"),
