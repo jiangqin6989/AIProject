@@ -20,7 +20,7 @@ class ChatHistoryManager:
             _session_store[self.chat_session_id] = InMemoryChatMessageHistory()
         return _session_store[self.chat_session_id]
 
-    def get_message(self) ->List[BaseMessage]:
+    def get_messages(self) ->List[BaseMessage]:
         """获取当前会话的所有消息列表"""
         return self.get_history().messages
 
@@ -34,7 +34,7 @@ class ChatHistoryManager:
 
     def get_recent_messages(self,count:int) -> List[BaseMessage]:
         """获取最近的N条消息"""
-        messages = self.get_message()
+        messages = self.get_messages()
         return  messages[-count:] if messages else []
 
     def clear(self) -> None:
