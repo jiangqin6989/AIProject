@@ -9,7 +9,7 @@ from core.prompt import INTEN_RECOGNIZE_WITH_STRUCTURED_OUTPUT_PROMPT
 class IntentResult(BaseModel):
     intents: list[str] = Field(description="意图列表，每一个元素为一个意图（支持多意图）")
     slots: dict[str, Any] = Field(description="slot值字典，键为slot名称，值为slot值，从输入中提取的结构化槽位（键值对）")
-    score: float = Field(description="置信度分数，意图识别的置信度（0-1），低于阈值可转人工，越大表示越信该意图")
+    confidence: float = Field(description="置信度分数，意图识别的置信度（0-1），低于阈值可转人工，越大表示越信该意图")
 
 
 class IntentRecognizer:
