@@ -9,6 +9,7 @@ chroma_db = Chroma(
     persist_directory="./chroma_db",
     collection_metadata={"hnsw:space": "cosine"}  # 余弦相似度
 )
+"""使用余弦相似度算法 cosine"""
 
 # 2. 新增 document
 data = [
